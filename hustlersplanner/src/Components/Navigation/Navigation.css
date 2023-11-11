@@ -1,0 +1,15 @@
+.nav{
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    }
+
+    .avatar{
+        height: 30px;
+        border-radius: 80%;
+        margin-right: 8px;
+    }

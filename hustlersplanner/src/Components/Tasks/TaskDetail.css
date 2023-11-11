@@ -1,0 +1,18 @@
+.container{
+width: 73% !important;
+    height: auto !important;
+     margin : 10px 0;
+     background-color : white;
+     border-radius : 30px;
+     padding : 20px;
+
+
+}
+
+.details {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}

@@ -13,5 +13,5 @@ app.listen(PORT, () => {
 connect();
 
 app.use('/api/tasks', require('./Routes/taskRoute'));
-
+app.use('/api/users', require('./Routes/UserRoute'));
 
