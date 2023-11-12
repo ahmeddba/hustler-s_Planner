@@ -7,6 +7,8 @@ import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 const TaskDetail = ({task}) => {
+  const datee = new Date(task.createdAt);
+  const date = datee.toLocaleDateString();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const displayButtons ={display : "flex" , justifyContent : "flex-start" ,width : '100%' , margin : '10px 0' }
@@ -19,9 +21,9 @@ const TaskDetail = ({task}) => {
       <h4 style={{textAlign : 'start'}}>Description: </h4>
       <div ><p  style={{textAlign : 'start' , whiteSpace: 'pre-wrap',wordBreak: 'break-word' }}>{task.description} </p> </div>
     </div>
-    <div style={{ flex : 1}}>
+    <div style={{ flex : 1 }}>
       <h4 style={{textAlign : 'start'}}>Started at: </h4>
-      <div  style={{textAlign : 'start'}}>{task.register_time}</div>
+      <div  style={{textAlign : 'start'}}>{date}</div>
       <h4 style={{textAlign : 'start'}}>Deadline: </h4>
       <div  style={{textAlign : 'start'}}>{task.deadline}</div>
       <h4 style={{textAlign : 'start'}}>Status:</h4>
@@ -34,7 +36,7 @@ const TaskDetail = ({task}) => {
     </div>
     <div style={displayButtons}></div>
     <button onClick={() => dispatch(delete_task(task._id))}><FontAwesomeIcon icon={faTrash} style={{color: "#28a745",}} /></button>
-  
+
     <button onClick={() => navigate(`/editTask/${task._id}`)}><FontAwesomeIcon icon={faPenToSquare} style={{color: "#28a745",marginLeft : '10px'}} /></button>
 
     </div>

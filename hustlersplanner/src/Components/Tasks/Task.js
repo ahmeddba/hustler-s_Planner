@@ -9,6 +9,8 @@ import TaskDetail from './TaskDetail'
 const Task = ({task , indexx }) => {
   const [affiche , setAffiche] = useState(false)
   const dispatch = useDispatch();
+  const datee = new Date(task.createdAt);
+  const date = datee.toLocaleDateString();
   const display = {display : 'flex' , flexDirection : 'row' , flexWrap : 'nowrap',justifyContent : 'space-between' ,alignItems : 'center' ,width : '73%' , margin : '10px 0',backgroundColor : 'white',borderRadius : '30px',padding : '10px' , border :"#15cb43 solid 2px" }
 const modify = useSelector(state => state.mod);
 console.log(task.isDone)
@@ -23,7 +25,7 @@ console.log(modify)
 
     </div>
     <div>
-      <span>{task.register_time}</span>
+      <span>{date}</span>
     </div>
     <div>
 

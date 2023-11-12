@@ -9,8 +9,14 @@ const TaskSchema = new mongoose.Schema({
     deadline:String,
     value: Number,
     isDone: Boolean,
-    description:String
+    description:String,
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'user',
+        required: true
+    },
     // category :String
-});
+},
+{timestamps: true});
 
 module.exports = Task = mongoose.model('task', TaskSchema);

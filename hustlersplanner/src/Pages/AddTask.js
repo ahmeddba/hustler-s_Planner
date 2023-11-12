@@ -7,13 +7,13 @@ import { addTask } from '../JS/Actions/TaskActions';
 
 const AddTask = () => {
   const navigate = useNavigate();
-
+const user = JSON.parse(localStorage.getItem('user'));
   const dispatch = useDispatch();
-
+console.log(user._id)
   const [newTask, setNewTask] = useState({});
   const display = {backgroundColor : "whitesmoke" , "padding" : "20px" , "borderRadius" : "10px" , "marginTop" : "50px" , "marginBottom" : "40px" , height : "auto" , width : "auto"}
   const handleChange = (e) => {
-    setNewTask({...newTask , [e.target.name] : e.target.value});
+    setNewTask({user:user._id ,...newTask , [e.target.name] : e.target.value});
 }
 const Add = () => {
   dispatch(addTask(newTask));

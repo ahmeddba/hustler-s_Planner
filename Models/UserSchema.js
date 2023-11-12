@@ -22,6 +22,9 @@ const UserSchema = new mongoose.Schema({
         required : true
          },
          fonction:String,
+    description:{
+        type:String,
+         },
     points:{
         type:Number,
         default:0
@@ -29,11 +32,13 @@ const UserSchema = new mongoose.Schema({
     image:{
         type: String,
 
-},
+    },
     // tasks:[{
     //     type:mongoose.Schema.Types.ObjectId,
     //     ref:'task'
-    // }]
+    // }],
+
+
 },
 {
     timestamps:true

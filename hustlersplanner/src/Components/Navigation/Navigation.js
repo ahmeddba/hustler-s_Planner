@@ -3,7 +3,7 @@ import './Navigation.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faListCheck } from '@fortawesome/free-solid-svg-icons'
 import {  Link, useNavigate } from 'react-router-dom'
-import { Button, Dropdown } from 'react-bootstrap'
+import { Button, CardImg, Dropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../JS/Actions/AuthActions'
 
@@ -11,9 +11,13 @@ import { logout } from '../../JS/Actions/AuthActions'
 const Navigation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
 
-    const navBar = {backgroundColor : "whitesmoke" , width : "100%" , height : "100px" ,position : "fixed" , top : "0px" , left : "0px" , right :"0px", zIndex : "1000"}
+  const user = JSON.parse(localStorage.getItem('user'));
+console.log(user)
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+const fullName = user && `${user.first_name} ${user.last_name}`;
+  const navBar = {backgroundColor : "whitesmoke" , width : "100%" , height : "100px" ,position : "fixed" , top : "0px" , left : "0px" , right :"0px", zIndex : "1000"}
+
   return (
     <div className='nav' style={navBar}>
         <div >
@@ -33,7 +37,7 @@ const Navigation = () => {
 
 <Dropdown.Toggle variant="success" id="dropdown-basic">
 <img src="/me.webp" alt="Avatar" class="avatar" />
-  User Name
+  {fullName}
 </Dropdown.Toggle>
 
 <Dropdown.Menu>

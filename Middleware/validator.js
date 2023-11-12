@@ -8,6 +8,8 @@ exports.registerValidation = () => [
      check('age',"this field shouldn't be empty").notEmpty(),
      check('fonction',"this field shouldn't be empty").notEmpty(),
      check('image',"this field shouldn't be empty").notEmpty(),
+     check('description',"this field shouldn't be empty").notEmpty(),
+     check('description',"description should contain at least 10 caracters").isLength({min:10}),
      check('password',"password should contain at least 6 caracters").isLength({min:6})
     ]
 

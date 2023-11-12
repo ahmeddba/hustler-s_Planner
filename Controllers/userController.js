@@ -4,11 +4,11 @@ const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
     try {
-        const { first_name, last_name, email, age, password, fonction,image } = req.body;
+        const { email} = req.body;
         // check if the email is unique
         const foundUser = await User.findOne({ email });
         foundUser && res.status(400).send({errors : [{msg:"This email already used"}]});
-        const newUser = new User({ first_name, last_name, email, age, password, fonction, image });
+        const newUser = new User({ ...req.body });
         newUser.password = await bcrypt.hash(password, 10);
         await newUser.save();
 
@@ -43,7 +43,7 @@ exports.login = async (req, res) => {
                 }
 
             const match = await bcrypt.compare(password, foundUser.password);
-            
+
             if(!match)
             res.status(400).send({errors : [{msg:"Wrong password"}]})
 

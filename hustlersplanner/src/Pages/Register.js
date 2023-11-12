@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, FloatingLabel, Form } from 'react-bootstrap'
 import './Register.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../JS/Actions/AuthActions'
@@ -36,8 +36,8 @@ console.log(errors)
         {
           errors ? errors.map((el , index) => el.path === 'first_name' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
           :
-           null
-          }
+          null
+        }
         </Form.Text>
       </Form.Group>
 
@@ -48,8 +48,8 @@ console.log(errors)
         {
           errors ? errors.map((el , index) => el.path === 'last_name' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
           :
-           null
-          }
+          null
+        }
         </Form.Text>
       </Form.Group>
 
@@ -57,11 +57,11 @@ console.log(errors)
         <Form.Label>Age</Form.Label>
         <Form.Control type="number" placeholder="Select your age" onChange={handleChange} name='age' min={0} />
         <Form.Text className="text-muted">
-          {
+        {
           errors ? errors.map((el , index) => el.path === 'age' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
           :
-           null
-          }
+          null
+        }
 
         </Form.Text>
       </Form.Group>
@@ -75,8 +75,9 @@ console.log(errors)
         {
           errors ? errors.map((el , index) => el.path === 'email' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
           :
-           null
-          }        </Form.Text>
+          null
+        }
+           </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3 a" controlId="formBasicPassword">
@@ -86,8 +87,8 @@ console.log(errors)
         {
           errors ? errors.map((el , index) => el.path === 'password' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
           :
-           null
-          }
+          null
+        }
         </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3 a" controlId="formBasicPassword">
@@ -103,8 +104,8 @@ console.log(errors)
         {
           errors ? errors.map((el , index) => el.path === 'fonction' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
           :
-           null
-          }
+          null
+        }
         </Form.Text>
 
     </Form.Group>
@@ -112,15 +113,35 @@ console.log(errors)
       </Form>
     </div>
     </div>
+    <Form.Group className="mb-3 " controlId="formBasicDescription">
+      <Form.Label>Description</Form.Label>
+    <FloatingLabel controlId="floatingTextarea2" label="Description">
+          <Form.Control
+            as="textarea"
+            name="description"
+            placeholder="Leave a comment here"
+            style={{ height: '100px' }}
+            onChange={handleChange}
+          />
+            <Form.Text className="text-muted">
+        {
+          errors ? errors.map((el , index) => el.path === 'description' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
+          :
+          null
+        }
+        </Form.Text>
+
+      </FloatingLabel>
+      </Form.Group>
     <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Select your Photo</Form.Label>
         <Form.Control type="file" />
         <Form.Text className="text-muted">
         {
-          errors ? errors.map((el , index) => el.path === 'image' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
+          errors ? errors.map((el,index) => el.path === 'image' && <p style={{color : "red"}} key={index}>{el.msg}</p>)
           :
-           null
-          }
+          null
+        }
         </Form.Text>
       </Form.Group>
       <Button style={{"marginRight" : "10px"}} variant='outline-success' onClick={() => dispatch(register(newUser))}>Submit</Button>

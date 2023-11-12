@@ -3,7 +3,7 @@ const Task = require('../Models/TaskSchema');
    exports.addTask = async (req, res) => {
 
     try {
-      const { name, deadline,description } = req.body;
+      const { name, deadline,description ,user} = req.body;
       const nowDate = new Date();
       const dayy = nowDate.getDay();
       const monthh = nowDate.getMonth();
@@ -14,7 +14,7 @@ const Task = require('../Models/TaskSchema');
 
       const register_time = `${dayy}-${monthh}-${yearr}`;
 
-      const newTask = new Task({ name, register_time, deadline, value,isDone ,description});
+      const newTask = new Task({ name, register_time, deadline, value, isDone, description, user });
       await newTask.save();
       res.status(201).send({success : {msg:"Task created successfuly" , newTask}});
   } catch (error) {
@@ -23,6 +23,7 @@ const Task = require('../Models/TaskSchema');
     }
 
  exports.allTasks = async (req, res) => {
+
     try {
         const tasks = await Task.find();
         res.status(200).send({success:{msg:"All tasks" , tasks}});

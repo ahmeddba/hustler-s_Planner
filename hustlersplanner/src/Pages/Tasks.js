@@ -12,7 +12,7 @@ const Tasks = () => {
   const display = { "display" : "flex" , "flexDirection" : "row" , "justifyContent" : "space-between" , "alignItems" : "center" , "marginTop" : "50px" , "marginBottom" : "40px"}
   return (
     <div style={display} >
-       <ProfileTasks/>
+       <ProfileTasks  />
        <ListTask/>
        <Button onClick={() => navigate('/newTask')} variant='outline-success'>
           <FontAwesomeIcon icon={faPlus} style={{color: "#15cb43" , marginRight : "6px"}} />

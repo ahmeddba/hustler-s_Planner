@@ -17,7 +17,7 @@ export const AuthReducer = ( state = initialState , {type , payload} ) => {
             }
         case REGISTER_AUTH:
             return{
-               ...state , success:payload.success , load: false , isAuth:true, user:payload.success.newUser
+               ...state , success:payload.success , load: false , isAuth:false, user:payload.success.newUser
             }
         case LOGIN_AUTH:
             localStorage.setItem("token", payload.success.token);
